@@ -2,11 +2,18 @@ use ExtUtils::MakeMaker;
 # See lib/ExtUtils/MakeMaker.pm for details of how to influence
 # the contents of the Makefile that is written.
 WriteMakefile(
-    'NAME'		=> 'Tk::LineNumberText',
-    'VERSION_FROM'	=> 'LineNumberText.pm', # finds $VERSION
-    'PREREQ_PM'		=> {},
-    'dist'              => {COMPRESS => 'gzip', SUFFIX => 'gz'},
-    ($] >= 5.005 ?    ## Add these new keywords supported since 5.005
-      (ABSTRACT_FROM => 'LineNumberText.pm', # retrieve abstract from module
-       AUTHOR     => 'Jack Dunnigan<dunniganj@cpan.org>') : ()),
+	'NAME'		=> 'Tk::LineNumberText',
+	'AUTHOR'	=> 'Jack Dunnigan (goodcall1[at]hotmail.com)',
+	'ABSTRACT'	=> 'Line numbers for your favorite Text-derived widget',
+	'VERSION_FROM'	=> 'LineNumberText.pm',
+	'dist'		=> {'COMPRESS'=>'gzip',
+	'SUFFIX'	=> '.gz',
+	'POSTOP'	=>'-$(CHMOD) 644 $(DISTVNAME).tar$(SUFFIX)'},
+	'PREREQ_PM'	=> {
+		'Tk'	=> 800.015,
+			},
+
+	'MAN3PODS'	=> {
+		'LineNumberText.pm'   => '$(INST_MAN3DIR)/Tk::LineNumberText.$(MAN3EXT)',
+		},
 );
